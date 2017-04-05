@@ -4,7 +4,7 @@ MAINTAINER Sangwon Lee <gamzabaw@gmail.com>
 
 RUN apt-get update &&   \
     apt-get install -y  \
-        python-pip
+        python3-pip
 
 ENV SPARK_VERSION 2.1.0
 ENV SPARK_URL http://d3kbcqa49mib13.cloudfront.net/spark-$SPARK_VERSION-bin-hadoop2.7.tgz
@@ -17,14 +17,15 @@ RUN set -x \
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark
 
-RUN pip install     \
-        jupyter     \
-        matplotlib  \
-        plotly      \
-        pandas      \
-        numpy       \
-        pymysql     \
-        sqlalchemy
+RUN pip3 install --upgrade pip
+RUN pip3 install notebook==4.4.1
+RUN pip3 install     \
+         matplotlib  \
+         plotly      \
+         pandas      \
+         numpy       \
+         pymysql     \
+         sqlalchemy
 
 ADD kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
