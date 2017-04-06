@@ -18,8 +18,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark
 
 RUN pip3 install --upgrade pip
-RUN pip3 install notebook==4.4.1
 RUN pip3 install     \
+         notebook    \
          matplotlib  \
          plotly      \
          pandas      \
@@ -37,6 +37,11 @@ VOLUME /opt/notebooks
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
+
+RUN locale-gen en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
 
 EXPOSE 8000
 

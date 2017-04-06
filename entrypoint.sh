@@ -32,4 +32,4 @@ function configure() {
 configure core CORE_CONF
 configure yarn YARN_CONF
 
-jupyter notebook --ip=0.0.0.0 --port=$JUPYTER_PORT --notebook-dir=$JUPYTER_NOTEBOOK_HOME
+jupyter notebook --ip=0.0.0.0 --port=$JUPYTER_PORT --notebook-dir=$JUPYTER_NOTEBOOK_HOME --allow-root
