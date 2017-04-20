@@ -4,7 +4,8 @@ MAINTAINER Sangwon Lee <gamzabaw@gmail.com>
 
 RUN apt-get update &&   \
     apt-get install -y  \
-        python3-pip
+        python3-pip     \
+        locales
 
 ENV SPARK_VERSION 2.1.0
 ENV SPARK_URL http://d3kbcqa49mib13.cloudfront.net/spark-$SPARK_VERSION-bin-hadoop2.7.tgz
@@ -17,6 +18,9 @@ RUN set -x \
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark
 
+RUN curl -fSL http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar -o $SPARK_HOME/jars/hadoop-aws-2.7.3.jar \
+    && curl -fSL http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar -o $SPARK_HOME/jars/aws-java-sdk-1.7.4.jar
+
 RUN pip3 install --upgrade pip
 RUN pip3 install     \
          notebook    \
@@ -25,7 +29,8 @@ RUN pip3 install     \
          pandas      \
          numpy       \
          pymysql     \
-         sqlalchemy
+         sqlalchemy  \
+         boto
 
 ADD kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
