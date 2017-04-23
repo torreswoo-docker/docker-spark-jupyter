@@ -1,5 +1,5 @@
 {
-  "display_name": "ScalaSpark",
+  "display_name": "Scala (Spark)",
   "language": "scala",
   "argv": [
     "/usr/local/share/jupyter/kernels/scala/bin/run.sh",
