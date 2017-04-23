@@ -1,0 +1,15 @@
+{
+  "display_name": "ScalaSpark",
+  "language": "scala",
+  "argv": [
+    "/usr/local/share/jupyter/kernels/scala/bin/run.sh",
+    "--profile",
+    "{connection_file}"
+  ],
+  "env": {
+    "__TOREE_SPARK_OPTS__": "--master yarn",
+    "__TOREE_OPTS__": "",
+    "SPARK_HOME": "/opt/spark",
+    "DEFAULT_INTERPRETER": "Scala"
+  }
+}

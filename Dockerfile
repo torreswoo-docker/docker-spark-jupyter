@@ -25,8 +25,22 @@ RUN pip3 install     \
          sqlalchemy  \
          boto
 
-ADD kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# toree scala kernel
+RUN pip install https://dist.apache.org/repos/dist/dev/incubator/toree/0.2.0/snapshots/dev1/toree-pip/toree-0.2.0.dev1.tar.gz
+RUN jupyter toree install         \
+    --spark_home=$SPARK_HOME      \
+    --spark_opts='--master=yarn'  \
+    --kernel_name=scala           \
+    --interpreters=Scala
+RUN mv /usr/local/share/jupyter/kernels/scala_scala /usr/local/share/jupyter/kernels/scala
+
+# add kernel configurations
+ADD kernels/pyspark/kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
+ADD kernels/scala/kernel.json /usr/local/share/jupyter/kernels/scala/kernel.json
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+
+# spark configuration
+ADD spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
 
 RUN mkdir -p /opt/notebooks
 VOLUME /opt/notebooks
