@@ -35,6 +35,7 @@ RUN jupyter toree install         \
 RUN mv /usr/local/share/jupyter/kernels/scala_scala /usr/local/share/jupyter/kernels/scala
 
 # add kernel configurations
+ADD kernels/python3/kernel.json /usr/local/share/jupyter/kernels/python3/kernel.json
 ADD kernels/pyspark/kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
 ADD kernels/scala/kernel.json /usr/local/share/jupyter/kernels/scala/kernel.json
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
