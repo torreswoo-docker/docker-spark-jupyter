@@ -25,6 +25,12 @@ RUN pip3 install     \
          sqlalchemy  \
          boto
 
+# jupyter configuration
+ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+
+# spark configuration
+ADD spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
+
 # toree scala kernel
 RUN pip install https://dist.apache.org/repos/dist/dev/incubator/toree/0.2.0/snapshots/dev1/toree-pip/toree-0.2.0.dev1.tar.gz
 RUN jupyter toree install         \
@@ -38,12 +44,9 @@ RUN mv /usr/local/share/jupyter/kernels/scala_scala /usr/local/share/jupyter/ker
 ADD kernels/python3/kernel.json /usr/local/share/jupyter/kernels/python3/kernel.json
 ADD kernels/pyspark/kernel.json /usr/local/share/jupyter/kernels/pyspark/kernel.json
 ADD kernels/scala/kernel.json /usr/local/share/jupyter/kernels/scala/kernel.json
-ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
-
-# spark configuration
-ADD spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
 
 RUN mkdir -p /opt/notebooks
+
 VOLUME /opt/notebooks
 
 EXPOSE 8000
