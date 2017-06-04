@@ -17,6 +17,7 @@ ENV LANGUAGE=en_US.UTF-8
 RUN pip3 install --upgrade \
     pip                    \
     notebook               \
+    hide_code              \
     matplotlib             \
     plotly                 \
     pandas                 \
@@ -32,6 +33,11 @@ RUN pip3 install --upgrade \
 
 # jupyter configuration
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+
+# notebook extensions
+RUN jupyter nbextension install --py hide_code && \
+    jupyter nbextension enable --py hide_code && \
+    jupyter serverextension enable --py hide_code
 
 # spark configuration
 ADD spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
