@@ -14,6 +14,6 @@
     "PYTHONSTARTUP": "/opt/spark/python/pyspark/shell.py",
     "PYSPARK_PYTHON": "/usr/bin/python3",
     "PYSPARK_DRIVER_PYTHON": "/usr/local/bin/ipython3",
-    "PYSPARK_SUBMIT_ARGS": "yarn pyspark-shell"
+    "PYSPARK_SUBMIT_ARGS": ""
   }
 }
