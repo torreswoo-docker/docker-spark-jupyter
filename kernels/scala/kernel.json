@@ -7,7 +7,7 @@
     "{connection_file}"
   ],
   "env": {
-    "__TOREE_SPARK_OPTS__": "--master yarn",
+    "__TOREE_SPARK_OPTS__": "",
     "__TOREE_OPTS__": "",
     "SPARK_HOME": "/opt/spark",
     "DEFAULT_INTERPRETER": "Scala"
