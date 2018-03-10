@@ -1,4 +1,4 @@
-FROM sangwonl/hadoop-spark:latest
+FROM sangwonl/hadoop-spark:2.1.0
 
 MAINTAINER Sangwon Lee <gamzabaw@gmail.com>
 
