@@ -43,7 +43,7 @@ RUN jupyter nbextension install --py hide_code && \
 ADD spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
 
 # toree scala kernel
-RUN pip install https://dist.apache.org/repos/dist/dev/incubator/toree/0.2.0/snapshots/dev1/toree-pip/toree-0.2.0.dev1.tar.gz
+RUN pip install https://archive.apache.org/dist/incubator/toree/0.2.0-incubating/toree-pip/toree-0.2.0.tar.gz
 RUN jupyter toree install         \
     --spark_home=$SPARK_HOME      \
     --spark_opts='--master=yarn'  \
